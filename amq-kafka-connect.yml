@@ -1,0 +1,12 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaConnect
+metadata:
+  name: simple-connect-cluster
+spec:
+  version: 2.3.0
+  replicas: 1
+  bootstrapServers: simple-cluster-kafka-bootstrap:9093
+  tls:
+    trustedCertificates:
+      - secretName: simple-cluster-cluster-ca-cert
+        certificate: ca.crt

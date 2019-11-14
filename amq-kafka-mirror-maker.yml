@@ -1,0 +1,14 @@
+apiVersion: kafka.strimzi.io/v1beta1
+kind: KafkaMirrorMaker
+metadata:
+  name: simple-mirror-maker
+spec:
+  version: 2.3.0
+  replicas: 1
+  consumer:
+    bootstrapServers: simple-cluster-kafka-bootstrap:9092
+    groupId: simple-source-group-id
+    numStreams: 2
+  producer:
+    bootstrapServers: simple-cluster-kafka-bootstrap.amq-streams-dc2.svc:9092
+  whitelist: ".*"
